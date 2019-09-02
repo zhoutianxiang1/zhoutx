@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.visionet.ztx.mapper.WuLiuMapper">
+	<resultMap type="com.visionet.ztx.dto.WuLiuDto" id="BaseResultMap">
+		<id property="wuLiuNo" column="wuLiuNo" />
+		<result property="appSecret" column="appSecret" />
+		<result property="appKey" column="appKey" />
+		<result property="accessToken" column="accessToken" />
+		<result property="serverUrl" column="serverUrl" />
+		<result property="wuLiuName" column="wuLiuName" />
+	</resultMap>
+
+	<sql id="allcolumn">
+		t.*
+	</sql>
+
+	<sql id="fromCase">
+		dbo.WuLiu t
+	</sql>
+
+
+	<select id="findByName" parameterType="java.lang.String"
+		resultMap="BaseResultMap">
+		select
+		<include refid="allcolumn" />
+		from
+		<include refid="fromCase" />
+		where t.wuLiuName = #{wuLiuName}
+	</select>
+</mapper>
